@@ -1,11 +1,10 @@
 import { Controller, Get, Post, Param, Body, NotFoundException } from '@nestjs/common';
 import { CreateMessageDto } from './dtos/create-message.dto';
 import { MessagesService } from './messages.service';
+
 @Controller('messages')
 export class MessagesController {
-    messagesService:MessagesService;
-    constructor(){ this.messagesService = new MessagesService()}
-
+    constructor(public messagesService:MessagesService){}
 @Get()
 listMessages() {
     return this.messagesService.findAll();
